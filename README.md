@@ -19,16 +19,16 @@
 
 [Data Structures](#data-structures) | [Algorithms](#algorithms) | [Concepts](#concepts)
 --- | --- | ---
-Linked List | Breadth-First Search | Bit Manipulation
-Trees, Tries, & Graphs | Depth-First Search | Memory (Stack vs. Heap)
-Stacks & Queues | Binary Search | Recursion
-Heaps | Merge Sort | Dynamic Programming
-Vectors/ ArrayList | Quick Sort | Big O Time & Space
-Hash Tables
+Linked List | [Breadth-First Search](#bfs) | Bit Manipulation
+Trees, Tries, & Graphs | [Depth-First Search](#dfs) | Memory (Stack vs. Heap)
+Stacks & Queues | [Binary Search](#binary-search) | [Recursion](#recursion-and-dynamic-programming)
+Heaps | [Merge Sort](#merge-sort) | [Dynamic Programming](#recursion-and-dynamic-programming)
+Vectors/ ArrayList | [Quick Sort](#quick-sort) | Big O Time & Space
+Hash Tables |
 
 ## Data Structures
 ## Algorithms
-### Breadth-First Search (BFS)
+### BFS
 
 In BFS, we start at the root (or another arbitrarily selected node) and explore each neighbor before going on to any of their children. That is, we go wide (hence breadth-first search) before we go deep.
 
@@ -60,7 +60,7 @@ def bfs(visited, graph, node):
 bfs(visited, graph, 'A')
 ```
 
-### Depth-First Search (DFS)
+### DFS
 
 In DFS, we start at the root (or another arbitrarily selected node) and explore each branch completely before moving on to the next branch. That is, we go deep first (hence the name depth-first search) before we go wide.
 
@@ -182,3 +182,40 @@ def partition(arr, left, right):
     return left
 ```
 ## Concepts
+### Recursion and Dynamic Programming
+
+A good way to approach dynamic programming is to implement it as a normal recursive solution, and then add the caching part.
+
+#### Example Problem
+**Triple Step:** A child is running up a staircase with n steps and can hop either 1 step, 2 steps or 3 steps at a time. Implement a method to count how many possible ways the child can run up the stairs.
+
+#### Brute Force Solution
+
+```
+def count_ways(n):
+    if n == 0:
+        return 1
+    elif n < 0:
+        return 0
+    else:
+        return count_ways(n-1) + count_ways(n-2) + count_ways(n-3)
+```
+
+#### Dynamic Programming Solution
+
+```
+def init_count_ways(n):
+    mem = [-1]*n
+    count_ways(n,mem)
+
+def count_ways(n,mem):
+    if n == 0:
+        return 1
+    elif n < 0:
+        return 0
+    elif mem[n] > -1:
+        return mem[n]
+    else:
+        mem[n] = return count_ways(n-1,mem) + count_ways(n-2,mem) + count_ways(n-3, mem)
+        return mem[n]
+```
