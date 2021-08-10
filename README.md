@@ -20,13 +20,52 @@
 [Data Structures](#data-structures) | [Algorithms](#algorithms) | [Concepts](#concepts)
 --- | --- | ---
 Linked List | [Breadth-First Search](#bfs) | Bit Manipulation
-Trees, Tries, & Graphs | [Depth-First Search](#dfs) | Memory (Stack vs. Heap)
+[Trees](#binary-tree-traversal), Tries, & Graphs | [Depth-First Search](#dfs) | Memory (Stack vs. Heap)
 Stacks & Queues | [Binary Search](#binary-search) | [Recursion](#recursion-and-dynamic-programming)
 Heaps | [Merge Sort](#merge-sort) | [Dynamic Programming](#recursion-and-dynamic-programming)
 Vectors/ ArrayList | [Quick Sort](#quick-sort) | Big O Time & Space
 Hash Tables |
 
 ## Data Structures
+### Binary Tree Traversal
+#### In-Order Traversal (left, root, right)
+In-order traversal visits the left branch, then the current node, and finally, the right branch.
+
+```
+def in_order_traversal(node):
+    if node:
+        in_order_traversal(node.left)
+        visit(node)
+        in_order_traversal(node.right)
+```
+
+When performed on a binary search tree, it visits the nodes in ascending order (hence the name "in-order").
+
+#### Pre-Order Traversal (root, left, right)
+Pre-order traversal visits the current node before its child nodes (hence the name "pre-order").
+
+```
+def pre_order_traversal(node):
+    if node:
+        visit(node)
+        pre_order_traversal(node.left)
+        pre_order_traversal(node.right)
+```
+
+In a pre-order traversal, the root is always the first node visited.
+
+### Post-Order Traversal
+Post-order traversal visits the current node after its child nodes (hence the name "post-order").
+
+```
+def post_order_traversal(node):
+    if node:
+        post_order_traversal(node.left)
+        post_order_traversal(node.right)
+        visit(node)
+```
+
+In a post-order traversal, the root is always the last node visited.
 ## Algorithms
 ### BFS
 
